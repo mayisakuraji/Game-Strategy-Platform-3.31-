@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>数据库表结构设计</title>
+<style>
+    body { font-family: "SimSun", "Songti SC", serif; } /* 宋体，符合论文规范 */
+    h3 { margin-top: 30px; font-family: "SimHei", sans-serif; } /* 黑体标题 */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 20px;
+        font-size: 10.5pt; /* 五号字 */
+    }
+    th, td {
+        border: 1px solid black; /* 实线边框 */
+        padding: 8px;
+        text-align: center; /* 居中对齐 */
+    }
+    th {
+        background-color: #f2f2f2; /*以此区分表头 */
+        font-weight: bold;
+    }
+    caption {
+        caption-side: top;
+        text-align: center;
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-family: "SimHei", sans-serif; /* 黑体图表题 */
+    }
+</style>
+</head>
+<body>
+
+<h3>4.1 数据库逻辑结构设计</h3>
+
+<table>
+    <caption>表 4-1 用户信息表 (user)</caption>
+    <thead>
+        <tr>
+            <th>字段名</th>
+            <th>数据类型</th>
+            <th>长度</th>
+            <th>主键</th>
+            <th>是否为空</th>
+            <th>描述</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>bigint</td>
+            <td>20</td>
+            <td>是</td>
+            <td>否</td>
+            <td>用户唯一标识ID</td>
+        </tr>
+        <tr>
+            <td>username</td>
+            <td>varchar</td>
+            <td>50</td>
+            <td>否</td>
+            <td>否</td>
+            <td>用户账号</td>
+        </tr>
+        <tr>
+            <td>password</td>
+            <td>varchar</td>
+            <td>100</td>
+            <td>否</td>
+            <td>否</td>
+            <td>加密密码</td>
+        </tr>
+        <tr>
+            <td>nickname</td>
+            <td>varchar</td>
+            <td>50</td>
+            <td>否</td>
+            <td>是</td>
+            <td>用户昵称</td>
+        </tr>
+        <tr>
+            <td>avatar</td>
+            <td>varchar</td>
+            <td>255</td>
+            <td>否</td>
+            <td>是</td>
+            <td>头像URL</td>
+        </tr>
+        <tr>
+            <td>role</td>
+            <td>varchar</td>
+            <td>20</td>
+            <td>否</td>
+            <td>否</td>
+            <td>角色权限</td>
+        </tr>
+        <tr>
+            <td>create_time</td>
+            <td>datetime</td>
+            <td>-</td>
+            <td>否</td>
+            <td>是</td>
+            <td>注册时间</td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <caption>表 4-2 游戏攻略表 (strategy)</caption>
+    <thead>
+        <tr>
+            <th>字段名</th>
+            <th>数据类型</th>
+            <th>长度</th>
+            <th>主键</th>
+            <th>是否为空</th>
+            <th>描述</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>bigint</td>
+            <td>20</td>
+            <td>是</td>
+            <td>否</td>
+            <td>攻略ID</td>
+        </tr>
+        <tr>
+            <td>title</td>
+            <td>varchar</td>
+            <td>100</td>
+            <td>否</td>
+            <td>否</td>
+            <td>攻略标题</td>
+        </tr>
+        <tr>
+            <td>game_tag</td>
+            <td>varchar</td>
+            <td>50</td>
+            <td>否</td>
+            <td>否</td>
+            <td>游戏标签</td>
+        </tr>
+        <tr>
+            <td>content</td>
+            <td>longtext</td>
+            <td>-</td>
+            <td>否</td>
+            <td>否</td>
+            <td>攻略正文</td>
+        </tr>
+        <tr>
+            <td>cover_image</td>
+            <td>varchar</td>
+            <td>255</td>
+            <td>否</td>
+            <td>是</td>
+            <td>封面图</td>
+        </tr>
+        <tr>
+            <td>author_id</td>
+            <td>bigint</td>
+            <td>20</td>
+            <td>否</td>
+            <td>否</td>
+            <td>作者ID</td>
+        </tr>
+        <tr>
+            <td>status</td>
+            <td>int</td>
+            <td>1</td>
+            <td>否</td>
+            <td>否</td>
+            <td>审核状态</td>
+        </tr>
+        <tr>
+            <td>view_count</td>
+            <td>int</td>
+            <td>11</td>
+            <td>否</td>
+            <td>否</td>
+            <td>浏览量</td>
+        </tr>
+        <tr>
+            <td>create_time</td>
+            <td>datetime</td>
+            <td>-</td>
+            <td>否</td>
+            <td>是</td>
+            <td>发布时间</td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <caption>表 4-3 游戏分类表 (category)</caption>
+    <thead>
+        <tr>
+            <th>字段名</th>
+            <th>数据类型</th>
+            <th>长度</th>
+            <th>主键</th>
+            <th>是否为空</th>
+            <th>描述</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>bigint</td>
+            <td>20</td>
+            <td>是</td>
+            <td>否</td>
+            <td>分类ID</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>varchar</td>
+            <td>50</td>
+            <td>否</td>
+            <td>否</td>
+            <td>分类名称</td>
+        </tr>
+        <tr>
+            <td>icon</td>
+            <td>varchar</td>
+            <td>255</td>
+            <td>否</td>
+            <td>是</td>
+            <td>图标URL</td>
+        </tr>
+        <tr>
+            <td>create_time</td>
+            <td>datetime</td>
+            <td>-</td>
+            <td>否</td>
+            <td>是</td>
+            <td>创建时间</td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <caption>表 4-4 评论表 (comment)</caption>
+    <thead>
+        <tr>
+            <th>字段名</th>
+            <th>数据类型</th>
+            <th>长度</th>
+            <th>主键</th>
+            <th>是否为空</th>
+            <th>描述</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>bigint</td>
+            <td>20</td>
+            <td>是</td>
+            <td>否</td>
+            <td>评论ID</td>
+        </tr>
+        <tr>
+            <td>strategy_id</td>
+            <td>bigint</td>
+            <td>20</td>
+            <td>否</td>
+            <td>否</td>
+            <td>攻略ID</td>
+        </tr>
+        <tr>
+            <td>user_id</td>
+            <td>bigint</td>
+            <td>20</td>
+            <td>否</td>
+            <td>否</td>
+            <td>用户ID</td>
+        </tr>
+        <tr>
+            <td>content</td>
+            <td>varchar</td>
+            <td>500</td>
+            <td>否</td>
+            <td>否</td>
+            <td>评论内容</td>
+        </tr>
+        <tr>
+            <td>create_time</td>
+            <td>datetime</td>
+            <td>-</td>
+            <td>否</td>
+            <td>是</td>
+            <td>评论时间</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

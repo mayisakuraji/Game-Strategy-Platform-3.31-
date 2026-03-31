@@ -1,0 +1,25 @@
+server:
+  port: 8080 # 项目启动端口
+
+spring:
+  datasource:
+    # 本地数据库的名字和密码
+    url: jdbc:mysql://localhost:3306/game_strategy?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+  jpa:
+    hibernate:
+      ddl-auto: update # 自动根据 Java 代码生成/更新数据库表
+    show-sql: true # 在控制台打印 SQL 语句
+
+  spring:
+    redis:
+      host: localhost
+      port: 6379

@@ -1,0 +1,238 @@
+/* 全局样式重置和主题变量 */
+:root {
+  /* 默认暗色主题变量 - 会被 useTheme 动态覆盖 */
+  --bg-color: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-tertiary: #21262d;
+  --text-primary: #f0f6fc;
+  --text-secondary: #8b949e;
+  --text-muted: #484f58;
+  --accent-color: #58a6ff;
+  --accent-hover: #79c0ff;
+  --border-color: #30363d;
+  --border-light: #21262d;
+  --card-bg: #161b22;
+  --card-border: #30363d;
+  --card-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  --hover-color: #1f242c;
+  --success-color: #3fb950;
+  --warning-color: #d29922;
+  --danger-color: #f85149;
+  --info-color: #58a6ff;
+  --header-bg: rgba(22, 27, 34, 0.95);
+  --hero-overlay: linear-gradient(to bottom, rgba(13, 17, 23, 0.3), rgba(13, 17, 23, 0.95));
+  --header-height: 64px;
+  
+  /* 动画变量 */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* 阴影 */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.15);
+  --shadow-lg: 0 8px 16px rgba(0,0,0,0.2);
+  --shadow-xl: 0 16px 32px rgba(0,0,0,0.25);
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'PingFang SC', system-ui, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #484f58;
+}
+
+/* Element Plus 组件样式覆盖 */
+.el-card {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  color: var(--text-primary) !important;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+  border-radius: 8px;
+}
+
+.el-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.el-card__header {
+  border-bottom: 1px solid var(--border-color) !important;
+  padding: 16px 20px !important;
+}
+
+.el-button--primary {
+  background-color: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+  color: white !important;
+  transition: all var(--transition-fast);
+  font-weight: 500;
+}
+
+.el-button--primary:hover {
+  background-color: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.el-button--default {
+  background-color: var(--bg-tertiary) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+  transition: all var(--transition-fast);
+}
+
+.el-button--default:hover {
+  background-color: var(--hover-color) !important;
+  border-color: var(--accent-color) !important;
+  color: var(--accent-color) !important;
+}
+
+.el-input__wrapper {
+  background-color: var(--bg-tertiary) !important;
+  box-shadow: 0 0 0 1px var(--border-color) inset !important;
+  transition: all var(--transition-fast);
+  border-radius: 6px;
+}
+
+.el-input__wrapper:hover {
+  box-shadow: 0 0 0 1px var(--accent-color) inset !important;
+}
+
+.el-input__wrapper.is-focus {
+  box-shadow: 0 0 0 2px var(--accent-color) inset !important;
+}
+
+.el-menu {
+  background-color: var(--bg-secondary) !important;
+  border-right: none !important;
+}
+
+.el-menu-item {
+  color: var(--text-primary) !important;
+  transition: all var(--transition-fast);
+}
+
+.el-menu-item:hover, .el-menu-item.is-active {
+  background-color: var(--hover-color) !important;
+  color: var(--accent-color) !important;
+}
+
+.el-tabs__item {
+  color: var(--text-secondary) !important;
+  transition: all var(--transition-fast);
+}
+
+.el-tabs__item.is-active {
+  color: var(--accent-color) !important;
+}
+
+.el-tabs__nav-wrap::after {
+  background-color: var(--border-color) !important;
+}
+
+.el-tag {
+  border: none !important;
+  transition: all var(--transition-fast);
+}
+
+.el-tag--info {
+  background-color: rgba(139, 148, 158, 0.2) !important;
+  color: var(--text-secondary) !important;
+}
+
+.el-tag--success {
+  background-color: rgba(63, 185, 80, 0.2) !important;
+  color: var(--success-color) !important;
+}
+
+.el-tag--warning {
+  background-color: rgba(210, 153, 34, 0.2) !important;
+  color: var(--warning-color) !important;
+}
+
+.el-tag--danger {
+  background-color: rgba(248, 81, 73, 0.2) !important;
+  color: var(--danger-color) !important;
+}
+
+/* 排版样式 */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color var(--transition-normal);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+/* 现代化玻璃效果 */
+.glass-panel {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+  transition: background var(--transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* 主题切换动画 */
+* {
+  transition: background-color var(--transition-normal), 
+              border-color var(--transition-normal), 
+              color var(--transition-normal),
+              box-shadow var(--transition-normal) !important;
+}
